@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package org.example.mcibigdatachallenge.proto;
+
+// Define a message for the weather data
+message WeatherEvent {
+  string date_time = 1;
+  string city = 2;
+  double currently_apparent_temperature = 3;
+  double currently_humidity = 4;
+  double currently_precip_intensity = 5;
+  double currently_precip_probability = 6;
+  optional string currently_precip_type = 7;
+  double currently_temperature = 8;
+  double currently_visibility = 9;
+  double currently_wind_speed = 10;
+}

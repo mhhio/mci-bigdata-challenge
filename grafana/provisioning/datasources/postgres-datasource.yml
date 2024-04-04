@@ -1,0 +1,17 @@
+apiVersion: 1
+
+datasources:
+  - name: PostgreSQL
+    type: postgres
+    uid: grafana-postgres
+    access: proxy
+    url: postgres:5432
+    database: weather
+    user: postgres
+    secureJsonData:
+      password: "password"
+    jsonData:
+      sslMode: "disable"
+      postgresVersion: 1500
+      timescaledb: false
+    editable: true
