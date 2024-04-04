@@ -29,48 +29,51 @@ This project is a Spring Boot application designed for processing weather data. 
    ```sh
    cd mci-bigdata-challenge
    ```
-3. Build the project:
+3. Build the docker image:
    ```sh
-   mvn clean install
+   docker build -t weather-app .
    ```
-4. Start the Kafka and PostgreSQL services (using Docker):
+4. Start application and other services the Kafka and PostgreSQL services (using Docker):
    ```sh
    docker-compose up -d
    ```
-5. Run the application:
-   ```sh
-   mvn spring-boot:run
-   ```
+
+
+_if you want to run application without docker image please consider postgres url and kafka url in `application.properties`_
 
 ## Usage
 
 ### Publishing Data to Kafka
 To publish data from a source JSON file to Kafka, use the following endpoint:
 ```
-GET /pipeline/publish?source=[path-to-json-file]
+curl -F "file=@[path/to/json/file]" http://localhost:8080/pipeline/publish
 ```
+_consider file size should be lower than 1GB_
 
 ### Querying Weather Data
 - **Most Humid Cities Daily:**
   ```
-  GET /api/weather/top-humid-cities
+  curl http://localhost:8080/api/weather/top-humid-cities
   ```
 - **Hottest Cities Daily:**
   ```
-  GET /api/weather/hottest-cities/daily
+  curl http://localhost:8080/api/weather/hottest-cities/daily
   ```
 - **Hottest Cities Monthly:**
   ```
-  GET /api/weather/hottest-cities/monthly
+  curl http://localhost:8080/api/weather/hottest-cities/monthly
   ```
 - **Coldest Cities Daily:**
   ```
-  GET /api/weather/coldest-cities/daily
+  curl http://localhost:8080/api/weather/coldest-cities/daily
   ```
 - **Coldest Cities Monthly:**
   ```
-  GET /api/weather/coldest-cities/monthly
+  curl http://localhost:8080/api/weather/coldest-cities/monthly
   ```
 
+## Swagger UI
+To access the Swagger UI for API documentation and testing, navigate to http://localhost:8080/swagger-ui.html in your web browser.
+
 ## Grafana Dashboard
-![Grafana Dashboard Placeholder](./image/dashbaord.png)
+![Grafana Dashboard Placeholder](./image/dashboard.png)

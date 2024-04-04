@@ -10,6 +10,7 @@ import org.example.mcibigdatachallenge.util.SerializerUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +23,9 @@ public class KafkaProducerService {
     @Value("${kafka.topic}")
     private String topic;
 
-    public void publish(String path) {
+    public void publish(MultipartFile file) {
         //read all json string line
-        List<String> lines = FileUtil.readLines(path);
+        List<String> lines = FileUtil.readMultipartFile(file);
         for (String line : lines) {
             //convert string to json
             Optional<WeatherEventDto> weatherEventDtoOptional = DeserializerUtil.jsonDeserializer(objectMapper, line);
