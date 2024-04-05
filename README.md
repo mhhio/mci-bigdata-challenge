@@ -76,4 +76,6 @@ _consider file size should be lower than 1GB_
 To access the Swagger UI for API documentation and testing, navigate to http://localhost:8080/swagger-ui.html in your web browser.
 
 ## Grafana Dashboard
+To access Grafana dashboard open Grafana in your browser navigate to http://localhost:3000, login with _admin_ as username and password and in **Dashboards** menu select **Weather Events**
+
 ![Grafana Dashboard Placeholder](./image/dashboard.png)
